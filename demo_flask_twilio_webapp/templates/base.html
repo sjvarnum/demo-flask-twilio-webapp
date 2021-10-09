@@ -36,16 +36,28 @@
                             <a class="nav-link" href="#">Create Message</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Add User</a>
+                            <a
+                                class="nav-link"
+                                href="{{ url_for('auth.add_user') }}"
+                                >Add User</a
+                            >
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Add Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Log Out</a>
+                            <a
+                                class="nav-link"
+                                href="{{ url_for('auth.logout') }}"
+                                >Log Out</a
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Log In</a>
+                            <a
+                                class="nav-link"
+                                href="{{ url_for('auth.login') }}"
+                                >Log In</a
+                            >
                         </li>
                     </ul>
                 </div>
