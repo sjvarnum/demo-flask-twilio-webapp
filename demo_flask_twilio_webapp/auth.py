@@ -70,7 +70,7 @@ def login():
         if error is None:
             flash('Logged in successfully!', 'success')
             login_user(user, remember=True)
-            return redirect(url_for('auth.add_user'))
+            return redirect(url_for('message.create'))
 
         flash(error, 'danger')
 
