@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block header %}
+<h1 class="display-5 fw-bold text-center p-5">
+    {% block title %}Add User{% endblock %}
+</h1>
+{% endblock %} {% block content %}
+<p>
+    Use this form to add users who are allowed to send notifications. Only
+    administrators can add users.
+</p>
+<form method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+            class="form-control"
+            name="name"
+            id="name"
+            placeholder="Enter full name"
+            required
+        />
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="email@example.com"
+            required
+        />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter a password"
+            required
+        />
+    </div>
+    <div>
+        <input
+            class="btn btn-danger btn-lg px-4 gap-3"
+            type="submit"
+            value="Add User"
+            onclick="return confirm('Are you sure?');"
+        />
+    </div>
+</form>
+{% endblock %}
