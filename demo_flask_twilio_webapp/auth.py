@@ -8,6 +8,7 @@ from . import db
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('add-user', methods=['GET', 'POST'])
+@login_required
 def add_user():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -27,6 +28,29 @@ def add_user():
             return redirect(url_for('auth.login'))
 
     return render_template('auth/add-user.html')
+
+
+@bp.route('add-contact', methods=['GET', 'POST'])
+@login_required
+def add_contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email').lower()
+        phone = request.form.get('phone')
+
+        check_email = Contact.query.filter_by(email=email).first()
+
+        if check_email:
+            error = f'Contact {email} already exists.'
+            flash(error, 'danger')
+        else:
+            new_user = Contact(email=email, name=name, phone=phone)
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Contact added successfully!', 'success')
+            return redirect(url_for('auth.add_contact'))
+
+    return render_template('auth/add-contact.html')
 
 
 @bp.route('/login', methods=['GET', 'POST'])
