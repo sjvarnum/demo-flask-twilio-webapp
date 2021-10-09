@@ -51,3 +51,10 @@ def login():
         flash(error, 'danger')
 
     return render_template('auth/login.html', user=current_user)
+
+
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
