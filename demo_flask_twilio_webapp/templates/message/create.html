@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block header %}
+<h1 class="display-5 fw-bold text-center p-5">
+    {% block title %}Create A Message{% endblock %}
+</h1>
+{% endblock %} {% block content %}
+<div class="container">
+    <form method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+                class="form-control"
+                name="title"
+                id="title"
+                placeholder="Enter text title"
+                value="{{ request.form['title'] }}"
+                required
+            />
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">Body</label>
+            <textarea
+                class="form-control"
+                name="body"
+                id="body"
+                style="height: 100px"
+                placeholder="Type message"
+                required
+            >
+{{ request.form['body'] }}</textarea
+            >
+        </div>
+        <div>
+            <input
+                class="btn btn-danger btn-lg px-4 gap-3"
+                type="submit"
+                value="Send"
+                onclick="return confirm('Are you sure?');"
+            />
+        </div>
+    </form>
+    <div class="mt-5">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+        {% if messages %} {% for category, message in messages %} {% if
+        category=='info' %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+            ></button>
+            {{ message }}
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+    </div>
+</div>
+
+{% endblock %}

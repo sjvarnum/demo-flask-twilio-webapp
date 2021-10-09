@@ -27,8 +27,8 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
-    # from . import message
-    # app.register_blueprint(message.bp)
+    from . import message
+    app.register_blueprint(message.bp)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
