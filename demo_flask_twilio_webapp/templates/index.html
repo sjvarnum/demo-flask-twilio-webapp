@@ -1,15 +1,11 @@
 {% extends 'base.html' %} {% block header %}
-<h1 class="display-5 fw-bold text-center p-5">
-  {% block title %}Welcome To ACME{% endblock %}
-</h1>
-{% endblock %}{% block content %}
-<div class="container">
-  <h1 class="text-center mb-4">Send a text message!</h1>
-  <div>
-    <a href="{{ url_for('message.create') }}" alt="Send a text message"
-      ><img src="../static/img/send-sms-from-pc.png" alt="Send a text message"
-    /></a>
-  </div>
+<div class="d-flex-column justify-content-center">
+  <h1 class="fw-bold text-center mt-5 mb-4">
+    {% block title %}Welcome To NCMA Tools{% endblock %}
+  </h1>
+  <h2 class="text-center mb-4">Send a text message to students!</h2>
+  <a href="{{ url_for('message.create') }}" alt="Send a text message"
+    ><img src="../static/img/send-sms-from-pc.png" alt="Send a text message" class="img-fluid"
+  /></a>
 </div>
-
 {% endblock %}
