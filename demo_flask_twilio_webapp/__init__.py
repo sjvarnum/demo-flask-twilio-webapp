@@ -24,6 +24,9 @@ def create_app():
 
     create_database(app)
 
+    from . import routes
+    app.register_blueprint(routes.bp)
+
     from . import auth
     app.register_blueprint(auth.bp)
 
