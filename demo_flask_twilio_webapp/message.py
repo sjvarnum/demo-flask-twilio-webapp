@@ -24,9 +24,9 @@ def create():
         title = request.form['title']
         body = request.form['body']
 
-        ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
-        AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')        
-        FROM_ = os.environ.get('TWILIO_FROM')
+        ACCOUNT_SID = os.environ.get('TWILIO_TEST_ACCOUNT_SID')
+        AUTH_TOKEN = os.environ.get('TWILIO_TEST_AUTH_TOKEN')        
+        FROM_ = os.environ.get('TWILIO_TEST_FROM')
 
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
