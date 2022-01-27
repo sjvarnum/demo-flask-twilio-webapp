@@ -23,6 +23,7 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+        sendto = request.form['sendto']
 
         ACCOUNT_SID = os.environ.get('TWILIO_TEST_ACCOUNT_SID')
         AUTH_TOKEN = os.environ.get('TWILIO_TEST_AUTH_TOKEN')        
@@ -31,10 +32,19 @@ def create():
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
         rows = list()
-        for row in db.session.query(Contact.phone, Contact.name):
-            rows.append(row)
+        if sendto == '1':
+            for row in db.session.query(Contact.phone, Contact.name, Contact.notes):
+                rows.append(row)
 
-        for phone, name in rows:
+        elif sendto == '2':
+            for row in db.session.query(Contact.phone, Contact.name, Contact.notes).filter(Contact.notes=='Tues-Thurs-Class'):
+                rows.append(row)
+
+        elif sendto == '3':
+            for row in db.session.query(Contact.phone, Contact.name, Contact.notes).filter(Contact.notes=='Wed-Fri-Class'):
+                rows.append(row)
+
+        for phone, name, notes in rows:
             phone = f'+1{phone}'
             name = name
             try:
@@ -49,5 +59,5 @@ def create():
                 error_msg = e.msg
                 flash(f'Could not send message. {error_msg}', 'danger')
         return redirect(url_for('message.create'))
-        
+
     return render_template('message/create.html')
