@@ -18,4 +18,6 @@ class Contact(db.Model, UserMixin):
     name = db.Column(db.String(150))
     email = db.Column(db.String(150))
     phone = db.Column(db.String(150))
+    title = db.Column(db.String(150))
+    notes = db.Column(db.String(500))
     create_date = db.Column(db.DateTime, default=datetime.utcnow)
