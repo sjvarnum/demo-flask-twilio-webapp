@@ -22,18 +22,6 @@ The texting platform is Twilio so you can set up an account on that platform. Yo
 
 The app uses Bootstrap for styling.
 
-## To Do
-
-Some enhancements:
-
-1. Add a home page with instructions - ## DONE
-    - Currently you navigate to /auth/login or /message/create
-    - There really isn't a home landing page at /
-2. Add email notifications in addition to texts?
-3. Improve stying
-4. Add ability to add individual phone numbers to send message to.
-5. Add ability to select contacts or contact groups based on roles and other parameters/tags (students, instructors, customers, employees, admins, etc.)
-
 ![](/docs/img/send-sms-from-pc.png)
 
 ## Some Screenshots
